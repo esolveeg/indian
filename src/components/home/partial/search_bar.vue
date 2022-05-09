@@ -1,6 +1,6 @@
 <template>
  <div class="search">
-        <SearchIcon @click.prevent="goToSearchPage" class="search_icon" />
+        <SearchIcon @click.prevent="goToSearchPage" class="search_icon cursor-pointer" />
         <input
             class="search_input"
             
@@ -37,7 +37,7 @@ export default {
       'updateKeywordsAction',
     ]),
     goToSearchPage(){
-      this.$router.push({name:'Search',params:{keywords:keywords}})
+      this.$router.push({name:'Search',params:{keywords:this.keywords}})
     },
     search(e) {
       this.updateKeywordsAction(e.target.value)

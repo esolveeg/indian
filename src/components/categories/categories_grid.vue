@@ -4,7 +4,9 @@
     <div v-else class='overflow-hidden gap- mx-auto max-w-7xl sm:px-6 lg:px-8 sm:grid-cols-2 md:grid-cols-2 sm:gap-8'>
       <tabs :options="{ useUrlFragment: false }" @clicked="tabClicked" @changed="tabChanged" nav-item-class="nav-item">
         <tab v-for='category in allCategoriesWithSubcategories' :key='category.id'  :name="$filters.transString(category?.name)">
-           <SubCategories :subCategories='category?.sub_categories || []' aria-hidden='true' />
+           <div class='grid overflow-hidden grid-cols-2 gap-4 px-4 mx-auto max-w-7xl sm:py-6 sm:px-6 lg:px-8 sm:grid-cols-3 lg:grid-cols-6 sm:gap-8'>
+      <CategoryItem v-for='subcat in category.sub_categories' :key='subcat.id' :category='subcat' />
+    </div>
         </tab>
     </tabs>
     </div>
@@ -16,12 +18,13 @@
 import { createNamespacedHelpers } from 'vuex'
 import {Tabs, Tab} from 'vue3-tabs-component';
 const { mapState, mapActions } = createNamespacedHelpers('category')
+import CategoryItem from './partial/category_item.vue'
 
 import SubCategories from './sub_categories.vue'
 import CategoriesLoader from './partial/categories_loader.vue'
 
 export default {
-  components: { CategoriesLoader, SubCategories , Tabs ,Tab },
+  components: { CategoriesLoader, CategoryItem , Tabs ,Tab },
   mounted() {
     this.getAllWithSubCategoriesAction()
   },
