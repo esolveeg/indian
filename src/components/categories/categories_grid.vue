@@ -41,9 +41,10 @@ export default {
 .tabs-component-tabs{
   display: flex;
   justify-content: center;
+  margin-bottom: 20px;
 }
 .tabs-component-tabs li a{
-  width: 300px;
+  /* width: 300px; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -54,12 +55,33 @@ export default {
   font-weight: 500;
   font-size: 18px;
   transition: all .3s;
+  padding: 0 50px;
 }
 .tabs-component-tabs li.is-active a{
   background-color: #2596be;
   color: #fff;
+  /* width: auto !important; */
 }
 .tabs-component-tabs li:not(:first-child){
   transform: translateX(-35px);
+}
+@media(max-width:500px){
+  .tabs-component-tabs .nav-item a{
+  padding: 0 40px;
+  font-size: 12px;
+    /* width: 200px !important; */
+  }
+}
+@media(max-width:400px){
+  .tabs-component-tabs .nav-item a{
+    /* width: 180px !important; */
+    font-size: 12px;
+  }
+}
+@media(max-width:300px){
+  .tabs-component-tabs .nav-item a{
+    /* width: 120px !important; */
+    font: 14px;
+  }
 }
 </style>
